@@ -3,12 +3,8 @@ import type * as Stitches from "@stitches/react";
 import { styled } from "../theme";
 
 const SVideo = styled("video", {
-  maxWidth: "100%",
-  maxHeight: "100%",
   width: "100%",
   height: "100%",
-  objectFit: "cover",
-  transition: "all 500ms",
 });
 
 export type TVideoProps = VideoHTMLAttributes<HTMLVideoElement> &

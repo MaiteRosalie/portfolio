@@ -1,10 +1,13 @@
 import type * as Stitches from "@stitches/react";
 import React, { useState } from "react";
 import { Card } from "./Card";
-import { Img } from "./Img";
-import { Video } from "./Video";
 import { Modal } from "./Modal";
-import { SGridItem, SelectedImg } from "./Gallery.S";
+import {
+  SGridItem,
+  SGridItemImage,
+  SModalVideo,
+  SModalImage,
+} from "./Gallery.S";
 
 type TImage = {
   src: string;
@@ -24,32 +27,33 @@ export const Gallery = ({ images }: TGalleryProps) => {
   };
 
   return (
-    <>
+    <Card>
       <Modal isOpen={!!selected} onOpenChange={handleModal}>
-        <SelectedImg>
-          {selected?.video ? (
-            <Video src={`/images/${selected?.video}`} />
-          ) : (
-            <Img src={`/images/${selected?.src}`} title={selected?.alt} />
-          )}
-        </SelectedImg>
+        {selected?.video ? (
+          <SModalVideo src={`/images/${selected?.video}`} />
+        ) : (
+          <SModalImage
+            src={`/images/${selected?.src}`}
+            title={selected?.alt}
+            style={{ objectFit: "contain" }}
+          />
+        )}
       </Modal>
-      <Card>
-        {images.map(({ size, src, float, video, alt }) => (
-          <SGridItem size={size} float={float}>
-            <Img
-              className="image"
-              key={src}
-              src={`/images/${src}`}
-              title={alt}
-              alt={alt}
-              onClick={() => {
-                setSelected({ src, video, alt });
-              }}
-            />
-          </SGridItem>
-        ))}
-      </Card>
-    </>
+
+      {images.map(({ size, src, float, video, alt }) => (
+        <SGridItem size={size} float={float}>
+          <SGridItemImage
+            className="image"
+            key={src}
+            src={`/images/${src}`}
+            title={alt}
+            alt={alt}
+            onClick={() => {
+              setSelected({ size, src, float, video, alt });
+            }}
+          />
+        </SGridItem>
+      ))}
+    </Card>
   );
 };

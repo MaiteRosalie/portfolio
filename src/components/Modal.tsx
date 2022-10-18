@@ -1,6 +1,6 @@
 import React, { useLayoutEffect, useState, useRef } from "react";
 import ReactDOM from "react-dom";
-import { SCard, SOverlay, SWrapper } from "./Modal.S";
+import { SOverlay, SWrapper } from "./Modal.S";
 
 export type TModalProps = {
   children: JSX.Element;
@@ -36,9 +36,7 @@ export const Modal = ({ isOpen, children, onOpenChange }: TModalProps) => {
   const component = !isOpen ? null : (
     <SWrapper>
       <SOverlay />
-      <SCard id="modal" ref={ref}>
-        {children}
-      </SCard>
+      <div ref={ref}>{children}</div>
     </SWrapper>
   );
 

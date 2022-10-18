@@ -1,5 +1,4 @@
 import { styled, KFadeInRight } from "../theme";
-import { Card } from "./Card";
 
 export const SWrapper = styled("div", {
   position: "fixed",
@@ -18,10 +17,6 @@ export const SOverlay = styled("div", {
   left: 0,
   width: "100%",
   height: "100%",
-  background: "rgba(25, 25, 25, 0.8)",
+  background: "rgba(0, 0, 0, 0.8)",
   cursor: "pointer",
-});
-export const SCard = styled(Card, {
-  padding: "$2",
-  position: "relative",
 });
