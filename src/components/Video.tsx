@@ -1,4 +1,4 @@
-import { useState, useEffect, VideoHTMLAttributes, useRef } from "react";
+import { VideoHTMLAttributes } from "react";
 import type * as Stitches from "@stitches/react";
 import { styled } from "../theme";
 
@@ -15,15 +15,6 @@ export type TVideoProps = VideoHTMLAttributes<HTMLVideoElement> &
   Stitches.VariantProps<typeof SVideo>;
 
 export const Video = ({ src, ...rest }: TVideoProps) => {
-  const [loaded, setLoaded] = useState(false);
-  const ref = useRef<HTMLImageElement>(null);
-
-  useEffect(() => {
-    if (ref.current && ref.current.complete) {
-      setLoaded(true);
-    }
-  }, []);
-
   return (
     <SVideo width="320" height="240" controls {...rest}>
       <source src={src} />

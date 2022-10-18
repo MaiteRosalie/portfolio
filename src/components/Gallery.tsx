@@ -1,75 +1,55 @@
 import type * as Stitches from "@stitches/react";
+import React, { useState } from "react";
 import { Card } from "./Card";
 import { Img } from "./Img";
-import { styled } from "../theme";
+import { Video } from "./Video";
+import { Modal } from "./Modal";
+import { SGridItem, SelectedImg } from "./Gallery.S";
 
-const SGallery = styled(Card, {});
-
-const SGridItem = styled("div", {
-  overflow: "hidden",
-  position: "relative",
-  backgroundColor: "$neutral1",
-  variants: {
-    float: {
-      left: {
-        float: "left",
-      },
-      right: {
-        float: "right",
-      },
-    },
-    size: {
-      vertical: {
-        width: "25%",
-        paddingTop: "50%",
-      },
-      horizontal: {
-        width: "50%",
-        paddingTop: "25%",
-      },
-      square: {
-        width: "25%",
-        paddingTop: "25%",
-      },
-    },
-  },
-  defaultVariants: {
-    float: "left",
-  },
-});
-const SImg = styled(Img, {
-  cursor: "pointer",
-  position: "absolute",
-  top: 0,
-  left: 0,
-  "&:hover": {
-    transform: "scale(1.045)",
-  },
-});
+type TImage = {
+  src: string;
+  alt: string;
+  video?: string;
+} & Stitches.VariantProps<typeof SGridItem>;
 
 export type TGalleryProps = {
-  images: Array<
-    {
-      src: string;
-      alt: string;
-    } & Stitches.VariantProps<typeof SGridItem>
-  >;
+  images: Array<TImage>;
 };
 
 export const Gallery = ({ images }: TGalleryProps) => {
+  const [selected, setSelected] = useState<TImage | undefined>(undefined);
+
+  const handleModal = (value: boolean) => {
+    if (value === false) setSelected(undefined);
+  };
+
   return (
-    <SGallery>
-      {images.map(({ size, src, float, ...img }) => (
-        <SGridItem size={size} float={float}>
-          <SImg
-            className="image"
-            key={src}
-            src={`/images/${src}`}
-            title={img.alt}
-            {...img}
-          />
-        </SGridItem>
-      ))}
-    </SGallery>
+    <>
+      <Modal isOpen={!!selected} onOpenChange={handleModal}>
+        <SelectedImg>
+          {selected?.video ? (
+            <Video src={`/images/${selected?.video}`} />
+          ) : (
+            <Img src={`/images/${selected?.src}`} title={selected?.alt} />
+          )}
+        </SelectedImg>
+      </Modal>
+      <Card>
+        {images.map(({ size, src, float, video, alt }) => (
+          <SGridItem size={size} float={float}>
+            <Img
+              className="image"
+              key={src}
+              src={`/images/${src}`}
+              title={alt}
+              alt={alt}
+              onClick={() => {
+                setSelected({ src, video, alt });
+              }}
+            />
+          </SGridItem>
+        ))}
+      </Card>
+    </>
   );
 };

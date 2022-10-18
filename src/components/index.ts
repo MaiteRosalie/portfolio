@@ -13,3 +13,6 @@ export { Gallery } from "./Gallery";
 
 export type { TVideoProps } from "./Video";
 export { Video } from "./Video";
+
+export type { TModalProps } from "./Modal";
+export { Modal } from "./Modal";

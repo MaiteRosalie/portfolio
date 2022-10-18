@@ -5,4 +5,7 @@ export const Page = styled("div", {
   maxWidth: "1400px",
   margin: "0 auto",
   padding: "$3",
+  "@bp1": {
+    padding: "$2",
+  },
 });

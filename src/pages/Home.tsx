@@ -137,13 +137,15 @@ export const Home = () => {
           },
           {
             alt: "LoanQ app",
-            src: "item19.png",
+            src: "item27.png",
             size: "horizontal",
+            video: "video2.mp4",
           },
           {
             alt: "Service Empire app",
-            src: "item19.png",
+            src: "item28.png",
             size: "horizontal",
+            video: "video1.mp4",
           },
         ]}
       />

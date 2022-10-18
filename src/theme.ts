@@ -20,16 +20,11 @@ export const { styled, css, globalCss, keyframes } = createStitches({
     fonts: {
       default: "'Poppins', sans-serif",
     },
-    fontWeights: {},
-    lineHeights: {},
-    letterSpacings: {},
-    sizes: {},
-    borderWidths: {},
-    borderStyles: {},
-    radii: {},
-    shadows: {},
-    zIndices: {},
-    transitions: {},
+    media: {
+      bp1: "(min-width: 640px)",
+      bp2: "(min-width: 768px)",
+      bp3: "(min-width: 1024px)",
+    },
   },
 });
 
@@ -52,5 +47,7 @@ export const globalStyles = globalCss({
     backgroundImage: "linear-gradient(45deg, $gray1 0%, $gray2 100%)",
     animation: `${KFadeInRight} 200ms forwards`,
     backgroundAttachment: "fixed",
+    overflow: "hidden",
   },
+  "#root": { overflow: "auto" },
 });
