@@ -2,13 +2,12 @@
   "name": "portfolio",
   "version": "1.0.0",
   "main": "./src/index.html",
-  "repository": "git@github.com:MaiteRosalie/selectstar.git",
+  "repository": "git@github.com:MaiteRosalie/portfolio.git",
   "author": "Maite Rosalie <maite.rosalie@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "webpack serve --mode development --open",
-    "build": "webpack --mode production",
-    "heroku-prebuild": "yarn install --production=false"
+    "build": "webpack --mode production"
   },
   "dependencies": {
     "@stitches/react": "^1.2.8",
