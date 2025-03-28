@@ -2,7 +2,7 @@
 <img width="1440" alt="screenshot" src="https://github.com/MaiteRosalie/portfolio/assets/29237635/3d8bb0ce-86a6-49bc-b5a6-a60262f179b3">
 </br>
 </br>
-I built this project to showcase some of my work in a simple gallery using react. It is currently hosted at http://portfolio-mr.s3-website-us-east-1.amazonaws.com
+I built this project to showcase some of my work in a simple gallery using react. It is currently hosted at https://maiterosalie.netlify.app
 
 ## Tech Stack
 
